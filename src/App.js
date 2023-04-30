@@ -42,7 +42,7 @@ function App() {
   // console.log(windowSize.innerWidth);
 
   return (
-    <BrowserRouter basename="/BLOG">
+    <BrowserRouter basename="/blog">
       <nav>
         {windowSize.innerWidth > 450 && <span className="bracket">&lt;</span>}
         <Link to="/">
