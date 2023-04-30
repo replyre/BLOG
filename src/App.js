@@ -16,7 +16,6 @@ function App() {
       localStorage.clear();
       setIsAuth(false);
       alert("Successfully Logged Out");
-      window.location.pathname = "blog/Login";
     });
   };
 
@@ -66,7 +65,7 @@ function App() {
                 "Create Post"
               )}
             </Link>
-            <Link>
+            <Link to="/">
               <button className="signOut" onClick={logOut}>
                 {windowSize.innerWidth < 450 ? (
                   <FaSignOutAlt className="icon" />
