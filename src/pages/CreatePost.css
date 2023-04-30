@@ -1,0 +1,88 @@
+.createPage {
+  padding: 100px 0px;
+  height: fit-content;
+  background-color: rgb(246, 223, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.container {
+  height: 60%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+.container > h1 {
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  background-color: black;
+  border-radius: 15px 15px 0 0;
+}
+.form {
+  background-color: black;
+  color: white;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  line-height: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+  font-size: 20px;
+  font-family: monospace;
+  padding: 3px 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid grey;
+}
+
+textarea {
+  margin: auto;
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid grey;
+  padding: 10px;
+  resize: none;
+}
+
+button {
+  margin: 30px auto;
+  padding: 2px;
+  width: 50%;
+  font-size: 20px;
+  border: 3px solid grey;
+  border-radius: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+button:active {
+  transform: scale(0.98);
+  border: inset 1px grey;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    font-size: 3vw;
+  }
+
+  button {
+    font-size: 17px;
+  }
+}
