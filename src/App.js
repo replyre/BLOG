@@ -16,7 +16,7 @@ function App() {
       localStorage.clear();
       setIsAuth(false);
       alert("Successfully Logged Out");
-      window.location.pathname = "BLOG/Login";
+      window.location.pathname = "blog/Login";
     });
   };
 
