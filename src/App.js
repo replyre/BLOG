@@ -11,6 +11,7 @@ import { auth } from "./firebaseConfig";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+
   const logOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
@@ -37,8 +38,6 @@ function App() {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
-  // console.log(windowSize.innerWidth);
 
   return (
     <BrowserRouter basename="/blog">

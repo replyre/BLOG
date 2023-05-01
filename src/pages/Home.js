@@ -8,7 +8,9 @@ const Home = ({ isAuth }) => {
   const [postLists, SetPostList] = useState([]);
   const [postIndex, setPostIndex] = useState(0);
   const [check, setCheck] = useState(true);
+  const [deleted, setDelete] = useState(false);
   const postCollectionRef = collection(db, "posts");
+  // const [count, setCount] = useState(0);
   const handleButton = (i) => {
     setCheck((prevCheck) => !prevCheck);
     postIndex === i
@@ -17,22 +19,34 @@ const Home = ({ isAuth }) => {
         : setPostIndex(-1)
       : setPostIndex(i);
   };
+
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
+    setDelete((prev) => !prev);
   };
+
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postCollectionRef);
-      SetPostList(
-        data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-      );
-    };
-    getPosts();
-  }, [deletePost]);
+    try {
+      const getPosts = async () => {
+        const data = await getDocs(postCollectionRef);
+        SetPostList(
+          data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
+      };
+      getPosts();
+    } catch (err) {
+      alert("Data Unavailable, try again later.");
+      console.log(err);
+    }
+
+    // setCount((prevCount) => prevCount + 1);
+  }, [deleted]);
+
+  // console.log(count);
 
   return (
     <div className="homePage">
@@ -62,9 +76,7 @@ const Home = ({ isAuth }) => {
                 {isAuth && post.author.id === auth.currentUser.uid && (
                   <button
                     className="delete"
-                    onClick={() => {
-                      deletePost(post.id);
-                    }}
+                    onClick={() => deletePost(post.id)}
                   >
                     <FaTrashAlt />
                   </button>
